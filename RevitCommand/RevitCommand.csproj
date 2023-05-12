@@ -1,0 +1,249 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<Platforms>x64;AnyCPU</Platforms>
+		<PackageId>$(ProductName)</PackageId>
+		<Version></Version>
+		<Authors>$(Authors)</Authors>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug 2020|x64'">
+		<DefineConstants>DEBUG;TRACE</DefineConstants>
+	</PropertyGroup>
+	<Import Project="$(SolutionDir)CommonProjectProperties.prop" />
+	<ItemGroup>
+		<None Remove="0.Command\Model\Form\AirTerminalProcessor_Form.xaml" />
+		<None Remove="Library\Image\addsub.png" />
+		<None Remove="Library\Image\add_2.png" />
+		<None Remove="Library\Image\add_3.png" />
+		<None Remove="Library\Image\assign.png" />
+		<None Remove="Library\Image\assign2.png" />
+		<None Remove="Library\Image\bottom-arrow.png" />
+		<None Remove="Library\Image\calculate.png" />
+		<None Remove="Library\Image\copy.png" />
+		<None Remove="Library\Image\cross_button.png" />
+		<None Remove="Library\Image\delete.png" />
+		<None Remove="Library\Image\detach_2.png" />
+		<None Remove="Library\Image\document.png" />
+		<None Remove="Library\Image\dot.png" />
+		<None Remove="Library\Image\enter.png" />
+		<None Remove="Library\Image\excel.png" />
+		<None Remove="Library\Image\filter.png" />
+		<None Remove="Library\Image\folder.png" />
+		<None Remove="Library\Image\group.png" />
+		<None Remove="Library\Image\indent.png" />
+		<None Remove="Library\Image\key.png" />
+		<None Remove="Library\Image\left-arrow.png" />
+		<None Remove="Library\Image\minus.png" />
+		<None Remove="Library\Image\move_down.png" />
+		<None Remove="Library\Image\move_up.png" />
+		<None Remove="Library\Image\next.png" />
+		<None Remove="Library\Image\outdent.png" />
+		<None Remove="Library\Image\pick_2.png" />
+		<None Remove="Library\Image\picture.png" />
+		<None Remove="Library\Image\pinned_2.png" />
+		<None Remove="Library\Image\plus.png" />
+		<None Remove="Library\Image\refresh.png" />
+		<None Remove="Library\Image\rename.png" />
+		<None Remove="Library\Image\replace_text.png" />
+		<None Remove="Library\Image\right-arrow.png" />
+		<None Remove="Library\Image\save.png" />
+		<None Remove="Library\Image\search.png" />
+		<None Remove="Library\Image\select.png" />
+		<None Remove="Library\Image\select_3.png" />
+		<None Remove="Library\Image\tick.png" />
+		<None Remove="Library\Image\top-arrow.png" />
+		<None Remove="Library\Image\unpinned.png" />
+		<None Remove="Library\Image\view.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Library\Image\addsub.png">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Library\Image\add_2.png">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Library\Image\add_3.png">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Library\Image\assign.png">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Library\Image\assign2.png">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Library\Image\bottom-arrow.png">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Library\Image\calculate.png">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Library\Image\copy.png">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Library\Image\cross_button.png">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Library\Image\delete.png">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Library\Image\detach_2.png">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Library\Image\document.png">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Library\Image\dot.png">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Library\Image\enter.png">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Library\Image\excel.png">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Library\Image\folder.png">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Library\Image\group.png">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Library\Image\indent.png">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Library\Image\key.png">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Library\Image\left-arrow.png">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Library\Image\minus.png">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Library\Image\move_down.png">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Library\Image\move_up.png">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Library\Image\next.png">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Library\Image\outdent.png">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Library\Image\pick_2.png">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Library\Image\picture.png">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Library\Image\pinned_2.png">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Library\Image\plus.png">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Library\Image\refresh.png">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Library\Image\rename.png">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Library\Image\replace_text.png">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Library\Image\right-arrow.png">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Library\Image\save.png">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Library\Image\search.png">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Library\Image\select.png">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Library\Image\select_3.png">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
+	</ItemGroup>
+
+	<ItemGroup>
+		<Reference Include="BIMDev.ControlLibrary">
+		  <HintPath>..\lib\BIMDev.ControlLibrary.dll</HintPath>
+		  <CopyLocal>True</CopyLocal>
+		</Reference>
+		<Reference Include="Microsoft.CSharp" />
+		<Reference Include="PresentationCore" />
+		<Reference Include="PresentationFramework" />
+		<Reference Include="PresentationFramework.Aero, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+		<Reference Include="System.ComponentModel.Composition" />
+		<Reference Include="System.Data.DataSetExtensions" />
+		<Reference Include="System.IO" />
+		<Reference Include="System.Management" />
+		<Reference Include="System.Web.Extensions" />
+		<Reference Include="System.Windows.Forms" />
+		<Reference Include="System.Net.Http" />
+		<Reference Include="System.Xaml" />
+		<Reference Include="WindowsBase" />
+		<Reference Include="Microsoft.Expression.Interactions, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+			<HintPath>..\packages\Expression.Interaction.3.0.40218.0\lib\net46\Microsoft.Expression.Interactions.dll</HintPath>
+		</Reference>
+		<Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+			<HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+		</Reference>
+		<Reference Include="RevitAPI">
+			<HintPath>$(SolutionDir)\lib\$(RevitVersion)\RevitAPI.dll</HintPath>
+			<Private>False</Private>
+		</Reference>
+		<Reference Include="RevitAPIUI">
+			<HintPath>$(SolutionDir)\lib\$(RevitVersion)\RevitAPIUI.dll</HintPath>
+			<Private>False</Private>
+		</Reference>
+		<Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+			<HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+		</Reference>
+		<Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+			<HintPath>..\packages\Expression.Interaction.3.0.40218.0\lib\net46\System.Windows.Interactivity.dll</HintPath>
+		</Reference>
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies.net48" Version="1.0.2">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Nancy" Version="2.0.0" />
+		<PackageReference Include="System.Management" Version="6.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Page Include="0.Command\Model\Form\AirTerminalProcessor_Form.xaml">
+		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		  <SubType>Designer</SubType>
+		  <Generator>XamlIntelliSenseFileGenerator</Generator>
+		</Page>
+	</ItemGroup>
+
+	<ItemGroup>
+		<Resource Include="Library\Image\filter.png">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Library\Image\tick.png">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Library\Image\top-arrow.png">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Library\Image\unpinned.png">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Library\Image\view.png">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Resource>
+	</ItemGroup>
+
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+		<Exec Command="copy /Y &quot;$(TargetDir)$(AssemblyName).dll&quot; &quot;$(TargetDir)$(AssemblyName)_$(ConfigurationName).dll&quot;" />
+	</Target>
+</Project>

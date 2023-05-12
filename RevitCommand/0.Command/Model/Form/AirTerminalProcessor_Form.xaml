@@ -1,0 +1,18 @@
+﻿<Window x:Class="Model.Form.AirTerminalProcessor_Form"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:c="clr-namespace:Model.Control;assembly=BIMDev.ControlLibrary" mc:Ignorable="d"
+        Width="500" Height="200" Title="AirTerminal Connect" WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
+        FontSize="16"
+             x:Name="root">
+    <Window.Resources>
+        <ResourceDictionary Source="/BIMDev.ControlLibrary;component/Model/Style/Styles.xaml" />
+    </Window.Resources>
+    <StackPanel Margin="10" Orientation="Horizontal">
+        <TextBlock Text="Miệng gió:"/>
+        <TextBlock Text="{Binding Processor.AirTerminal.Symbol.FamilyName}"/>
+    </StackPanel>
+</Window>

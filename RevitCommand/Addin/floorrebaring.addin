@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>Hoa Binh Revit App</Name>
+    <Assembly>floorrebaring\floorrebaring.dll</Assembly>
+    <AddInId>73fd42e9-8f05-4162-be15-be17e8053374</AddInId>
+    <FullClassName>Model.Application.RibbonApp</FullClassName>
+    <VendorId>Huỳnh Thiện Tài</VendorId>
+    <VendorDescription>Huỳnh Thiện Tài, Hoa Binh Corporation</VendorDescription>
+  </AddIn>
+</RevitAddIns>
