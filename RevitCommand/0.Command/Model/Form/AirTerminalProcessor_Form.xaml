@@ -6,13 +6,38 @@
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:c="clr-namespace:Model.Control;assembly=BIMDev.ControlLibrary" mc:Ignorable="d"
         Width="500" Height="200" Title="AirTerminal Connect" WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
-        FontSize="16"
+        FontSize="16" SizeToContent="WidthAndHeight"
              x:Name="root">
-    <Window.Resources>
+    <!--<Window.Resources>
         <ResourceDictionary Source="/BIMDev.ControlLibrary;component/Model/Style/Styles.xaml" />
-    </Window.Resources>
-    <StackPanel Margin="10" Orientation="Horizontal">
-        <TextBlock Text="Miệng gió:"/>
-        <TextBlock Text="{Binding Processor.AirTerminal.Symbol.FamilyName}"/>
-    </StackPanel>
+    </Window.Resources>-->
+    <StackPanel Orientation="Vertical" Margin="10">
+        <StackPanel Orientation="Horizontal" Margin="0 4">
+             <TextBlock Text="Miệng gió:"/>
+             <TextBlock Text="{Binding Processor.AirTerminal.Symbol.FamilyName}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="0 8">
+            <TextBlock Text="Flex Duct :"/>
+            <ComboBox ItemsSource="{Binding FlexDuctTypes}" SelectedItem="{Binding Processor.FlexDuctType}"
+                      Width="265" DisplayMemberPath="Name" Margin="15 0 0 0 "/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Margin="0 8">
+            <TextBlock Text="Duct Type :"/>
+            <ComboBox ItemsSource="{Binding DuctTypes}" SelectedItem="{Binding Processor.DuctType}"
+                      Width="265" DisplayMemberPath="Name" Margin="10 0 0 0 " RenderTransformOrigin="0.5,0.5">
+                <ComboBox.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform AngleY="0.144"/>
+                        <RotateTransform/>
+                        <TranslateTransform Y="0.331"/>
+                    </TransformGroup>
+                </ComboBox.RenderTransform>
+            </ComboBox>
+        </StackPanel>
+
+        <Button Content="RUN" HorizontalAlignment="Left" Margin="15 8 0 0 " Padding="5 5 5 5" Click="run_Clicked"/>
+
+    </StackPanel>   
 </Window>

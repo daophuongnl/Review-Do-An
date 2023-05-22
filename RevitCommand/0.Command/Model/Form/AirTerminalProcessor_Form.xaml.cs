@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model.Dataa;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -13,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Model.Entity;
 
 namespace Model.Form
 {
@@ -21,9 +23,15 @@ namespace Model.Form
     /// </summary>
     public partial class AirTerminalProcessor_Form : System.Windows.Window
     {
+        private AirTerminalProcessor_Data data =>AirTerminalProcessor_Data.Instance;
         public AirTerminalProcessor_Form()
         {
             InitializeComponent();
+        }
+
+        private void run_Clicked(object sender, RoutedEventArgs e)
+        {
+            data.Processor.Do();
         }
     }
 }

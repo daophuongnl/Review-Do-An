@@ -14,14 +14,21 @@ namespace Model.Entity
 
         public FamilyInstance? AirTerminal { get; set; }
 
-        private Connector? airTerminalConnector;
+        private Connector? airTerminalConnector;               
         public Connector AirTerminalConnector => this.airTerminalConnector ??= this.GetAirTerminalConnector();
+
+        private Connector? airTerminalConnectorr;
+        public Connector AirTerminalConnectorr => this.airTerminalConnectorr ??= this.GetAirTerminalConnectorr();
+
+
+        //Thuộc tính của đối tượng
 
         private ElementId? levelId;
         public ElementId LevelId => this.levelId ??= this.GetLevelId();
 
         private ElementId? systemTypeId;
         public ElementId SystemTypeId => this.systemTypeId ??= this.GetSystemTypeId();
+
 
 
         private XYZ? tempDuctStartPoint;
@@ -33,6 +40,20 @@ namespace Model.Entity
         private FamilyInstance? tap;  //chỗ lưu trữ giá trị
         public FamilyInstance Tap     //phương thức truy xuất
             => this.tap ??=this.GetTap();
+
+        private FlexDuctType? flexDuctType;
+        public FlexDuctType? FlexDuctType
+        {
+            get => this.flexDuctType ??= this.GetFlexDuctType();
+            set => this.flexDuctType = value;
+        } 
+
+        private DuctType? ductType;
+        public DuctType? DuctType
+        {
+            get => this.ductType ??= this.GetDuctType();
+            set => this.ductType = value;
+        }
 
         private FlexDuct? flexDuct;
         public FlexDuct FlexDuct => this.flexDuct ??= this.GetFlexDuct();
