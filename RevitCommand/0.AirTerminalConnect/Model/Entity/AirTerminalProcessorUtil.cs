@@ -179,7 +179,7 @@ namespace Model.Entity
                 var tap = q.Tap;
                 doc.Delete(tempDuct.Id);
                 var flexDuct = q.FlexDuct;
-
+              
                 transaction.Commit();
 
             }

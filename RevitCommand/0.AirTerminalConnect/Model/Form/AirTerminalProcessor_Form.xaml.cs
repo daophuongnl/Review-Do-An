@@ -23,7 +23,7 @@ namespace Model.Form
     /// </summary>
     public partial class AirTerminalProcessor_Form : System.Windows.Window
     {
-        private AirTerminalProcessor_Data data =>AirTerminalProcessor_Data.Instance;
+        private AirTerminalProcessor_Data data => AirTerminalProcessor_Data.Instance;
         public AirTerminalProcessor_Form()
         {
             InitializeComponent();

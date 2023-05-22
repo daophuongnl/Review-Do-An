@@ -10,7 +10,12 @@
 	</PropertyGroup>
 	<Import Project="$(SolutionDir)CommonProjectProperties.prop" />
 	<ItemGroup>
-		<None Remove="0.Command\Model\Form\AirTerminalProcessor_Form.xaml" />
+	  <Compile Remove="0.Command\**" />
+	  <EmbeddedResource Remove="0.Command\**" />
+	  <None Remove="0.Command\**" />
+	</ItemGroup>
+	<ItemGroup>
+		<None Remove="0.AirTerminalConnect\Model\Form\AirTerminalProcessor_Form.xaml" />
 		<None Remove="Library\Image\addsub.png" />
 		<None Remove="Library\Image\add_2.png" />
 		<None Remove="Library\Image\add_3.png" />
@@ -218,14 +223,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Page Include="0.Command\Model\Form\AirTerminalProcessor_Form.xaml">
-		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-		  <SubType>Designer</SubType>
-		  <Generator>XamlIntelliSenseFileGenerator</Generator>
-		</Page>
-	</ItemGroup>
-
-	<ItemGroup>
 		<Resource Include="Library\Image\filter.png">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</Resource>
@@ -241,6 +238,17 @@
 		<Resource Include="Library\Image\view.png">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</Resource>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="1. DuctLeveling\Model\Entity\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Page Include="0.AirTerminalConnect\Model\Form\AirTerminalProcessor_Form.xaml">
+	    <Generator>XamlIntelliSenseFileGenerator</Generator>
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </Page>
 	</ItemGroup>
 
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
