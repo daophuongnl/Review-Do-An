@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:c="clr-namespace:Model.Control;assembly=BIMDev.ControlLibrary" mc:Ignorable="d"
-        Width="500" Height="150" Title="Up-Down Duct" WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
+        Width="500" Height="200" Title="Up-Down Duct" WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
         FontSize="16" 
         
              x:Name="root">

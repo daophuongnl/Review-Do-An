@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Model.Entity;
+using Model.Data;
 
 namespace Model.Form
 {
@@ -23,15 +24,15 @@ namespace Model.Form
     /// </summary>
     public partial class DuctLeveling_Form : System.Windows.Window
     {
-      
+        private DuctLevelingProcessor_Data data => DuctLevelingProcessor_Data.Instance;
         public DuctLeveling_Form()
         {
-            //InitializeComponent();
+            InitializeComponent();
         }
 
         private void run_clicked(object sender, RoutedEventArgs e)
         {
-
+            data.Processor.Do();
         }
     }
 }

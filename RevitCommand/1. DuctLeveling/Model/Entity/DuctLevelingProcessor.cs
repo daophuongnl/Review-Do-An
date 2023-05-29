@@ -41,7 +41,7 @@ namespace Model.Entity
 
         public double HorizontalOffset { get; set; } = 600.0.milimeter2Feet();
 
-        public double ZOffset { get; set; } = 500.0.milimeter2Feet();
+        public double ZOffset { get; set; } = -500.0.milimeter2Feet();
 
         private double? width;
         public double Width =>this.width??= this.Duct!.LookupParameter("Width").AsDouble();
