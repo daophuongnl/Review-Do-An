@@ -14,6 +14,11 @@ namespace Model.Entity
     {
         public Duct? Duct { get; set; }
 
+        public XYZ? Point { get; set; }
+
+        private XYZ? middlePoint;
+        public XYZ MiddlePoint => this.middlePoint ??= this.GetMiddlePoint();
+
         private LocationCurve? ductLocation;
         public LocationCurve DuctLocation => this.ductLocation ??= this.GetDuctLocation();
 
@@ -24,8 +29,8 @@ namespace Model.Entity
         public XYZ? DuctDirection => this.ductDirection??= this.GetDuctDirection();
 
 
-        private XYZ? middlePoint { get; set; }
-        public XYZ MiddlePoint => this .middlePoint??= this.GetMiddlePoint();
+        //private XYZ? middlePoint { get; set; }
+        //public XYZ MiddlePoint => this .middlePoint??= this.GetMiddlePoint();
 
         private ElementId? levelId;
         public ElementId LevelId => this.levelId ??= this.GetLevelId();
@@ -50,9 +55,16 @@ namespace Model.Entity
         private Duct? mainDuct2;
         public Duct MainDuct2 => this.mainDuct2??= this.GetMainDuct2();
 
+        public double Width_MiddleDuct { get; set; } = 600.0.milimeter2Feet();
+
         private Duct? middleDuct;
         public Duct MiddleDuct => this.middleDuct ??= this.GetMiddleDuct();
-        public Duct? ConnectDuct1 { get; set; }
-        public Duct? ConnectDuct2 { get; set; }
+
+
+        private Duct? connectorDuct1;
+        public Duct ConnectorDuct1 => this.connectorDuct1 ??= this.ConnectorDuct1();
+
+        private Duct? connectorDuct2;
+        public Duct ConnectorDuct2 => this.connectorDuct2 ??= this.ConnectorDuct2();
     }
 }

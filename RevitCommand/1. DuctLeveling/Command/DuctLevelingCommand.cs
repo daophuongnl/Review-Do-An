@@ -7,6 +7,9 @@ using System.Collections.Generic;
 using Model.Entity;
 using Utility;
 using Autodesk.Revit.DB.Mechanical;
+using System.Drawing;
+using System.Windows;
+using Autodesk.Revit.UI.Selection;
 
 namespace Model.RevitCommand
 {
@@ -17,7 +20,9 @@ namespace Model.RevitCommand
         {
             var processor = new DuctLevelingProcessor
             {
-                Duct = sel.PickElement<Duct>()
+                Duct = sel.PickElement<Duct>(),
+                Point = sel.PickPoint()
+
             };
             processor.Do();
         }

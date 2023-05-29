@@ -15,6 +15,7 @@ namespace Model.Entity
 
         public FamilyInstance? AirTerminal { get; set; }
 
+
         private Connector? airTerminalConnector;               
         public Connector AirTerminalConnector => this.airTerminalConnector ??= this.GetAirTerminalConnector();
 
