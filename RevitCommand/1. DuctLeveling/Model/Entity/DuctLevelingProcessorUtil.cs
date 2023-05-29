@@ -76,6 +76,7 @@ namespace Model.Entity
             duct.LookupParameter("Height").Set(height);
 
             return duct;
+
         }
         public static Duct GetMiddleDuct(this DuctLevelingProcessor q)
         {
