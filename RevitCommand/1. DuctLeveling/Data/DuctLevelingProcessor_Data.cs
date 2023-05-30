@@ -26,6 +26,6 @@ namespace Model.Data
         private DuctLevelingProcessor? processor;
         public DuctLevelingProcessor Processor => this.processor ??= new DuctLevelingProcessor();
 
-
+        
     }
 }

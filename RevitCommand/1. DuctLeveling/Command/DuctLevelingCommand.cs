@@ -26,7 +26,6 @@ namespace Model.RevitCommand
                 processor.Duct = sel.PickElement<Duct>();
                 processor.Point = sel.PickPoint();
 
-
                 //Duct = sel.PickElement<Duct>(),
                 //Point = sel.PickPoint()
 
