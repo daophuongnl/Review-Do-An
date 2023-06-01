@@ -123,7 +123,7 @@ namespace Model.Entity
             return connectorDuctt;
         }
 
-        // lệnh chạy 
+        // thực hiện câu lệnh
         public static void Do(this DuctLevelingProcessor q)
         {
             var doc = revitData.Document;
