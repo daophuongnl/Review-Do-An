@@ -28,7 +28,7 @@ namespace Model.Entity
         private XYZ? ductDirection;
         public XYZ? DuctDirection => this.ductDirection??= this.GetDuctDirection();
 
-
+        // thay đổi
         //private XYZ? middlePoint { get; set; }
         //public XYZ MiddlePoint => this .middlePoint??= this.GetMiddlePoint();
 
