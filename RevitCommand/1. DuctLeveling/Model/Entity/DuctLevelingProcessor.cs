@@ -53,6 +53,7 @@ namespace Model.Entity
 
         private double? height;
         public double Height => this.height ??= this.Duct!.LookupParameter("Height").AsDouble();
+
         //TH1 : cả 2 đầu đều đã kết nối connector
         private Connector? startConnector;
         public Connector StartConnector => this.startConnector ??= this.GetStartConnector();
