@@ -18,17 +18,58 @@ namespace Model.Entity
         public static LocationCurve GetDuctLocation(this DuctLevelingProcessor q)
         {
             var duct = q.Duct;
-            return (duct.Location as LocationCurve)!;
+            return (duct!.Location as LocationCurve)!;
         }
 
         public static Line GetDuctLine(this DuctLevelingProcessor q)
         {
             var duct = q.Duct;
-            return ((duct.Location as LocationCurve)!.Curve as Line)!;
+            return ((duct!.Location as LocationCurve)!.Curve as Line)!;
         }
+        //TH1 : cả 2 đầu đều đã kết nối connector
+        public static Connector GetStartConnector(this DuctLevelingProcessor q)
+        {
+            var duct = q.Duct!;
+            var line = q.DuctLine!;
+            var startPoint = line.GetEndPoint(0);
+
+            var connector = duct.ConnectorManager.Connectors.Cast<Connector>()
+                .Where(connector => connector.IsConnected)
+                .FirstOrDefault(connector => connector.Origin.IsEqual(startPoint));
+            return connector;
+        }
+        public static Connector GetEndConnector(this DuctLevelingProcessor q)
+        {
+            var duct = q.Duct!;
+            var line = q.DuctLine!;
+            var endPoint = line.GetEndPoint(1);
+
+            var connector = duct.ConnectorManager.Connectors.Cast<Connector>()
+                .Where(connector => connector.IsConnected)
+                .FirstOrDefault(connector => connector.Origin.IsEqual(endPoint));
+            return connector;
+        }
+
+        // TH2: 1 đầu có connector và 1 đầu ko
+        public static bool GetIsResverse(this DuctLevelingProcessor q)
+        {
+
+
+
+            //var duct = q.Duct!;
+            //var line = q.DuctLine!;
+            //var endPoint = line.GetEndPoint(1);
+
+            //var isResverse = duct.ConnectorManager.Connectors.Cast<Connector>()
+            //    .Where(connector =>connector.IsConnected)
+            //    .Any(connector => connector.Origin.IsEqual(endPoint));
+
+            return q.EndConnector != null && q.StartConnector == null;
+        }
+
         public static XYZ GetDuctDirection (this DuctLevelingProcessor q) 
         {
-            return q.DuctLine.Direction;
+            return q.DuctLine!.Direction;
         }
         public static ElementId GetLevelId(this DuctLevelingProcessor q)
         {
@@ -38,22 +79,39 @@ namespace Model.Entity
         {
             return q.Duct!.MEPSystem.GetTypeId();
         }
+
+        public static XYZ GetPickPoint(this DuctLevelingProcessor q)
+        {
+            return q.DuctLine!.GetCenterPoint();
+        }
         public static XYZ GetMiddlePoint(this DuctLevelingProcessor q)
         {
 
-            var point = q.Point;
+            var point = q.PickPoint;
             return q.DuctLine!.GetProjectPoint(point!);
 
         }
         public static Duct GetMainDuct1(this DuctLevelingProcessor q)
         {
-
-            var startPoint = q.DuctLine.GetEndPoint(0);
             var widthMiddleDuct = q.Width_MiddleDuct;
-            var endPoint = q.MiddlePoint - q.DuctDirection * (q.HorizontalOffset + widthMiddleDuct / 2);
+            XYZ? startPoint = null;
+            XYZ? endPoint = null;
 
+            var isReverse = q.IsResverse;
+            if(!isReverse)
+            {
+                startPoint = q.DuctLine!.GetEndPoint(0);
+                endPoint = q.MiddlePoint - q.DuctDirection * (q.HorizontalOffset + widthMiddleDuct / 2);
+            }
+            else
+            {
+                startPoint = q.MiddlePoint + q.DuctDirection * (q.HorizontalOffset + widthMiddleDuct / 2);
+                endPoint = q.DuctLine!.GetEndPoint(1);
+            }
 
             q.DuctLocation.Curve = Line.CreateBound(startPoint, endPoint);
+            var duct = q.Duct!;
+            duct.LookupParameter("Comments").Set("duct1");
 
             return q.Duct!;
         }
@@ -64,13 +122,24 @@ namespace Model.Entity
             var ductTypeId = q.DuctTypeId;
             var levelId = q.LevelId;
             var widthMiddleDuct = q.Width_MiddleDuct;
-
-            var startPoint = q.MiddlePoint + q.DuctDirection * (q.HorizontalOffset + widthMiddleDuct / 2);
-            var endPoint = q.DuctLine.GetEndPoint(1);
-
             var width = q.Width;
             var height = q.Height;
 
+            XYZ? startPoint = null;
+            XYZ? endPoint = null;
+
+            var isReverse = q.IsResverse;
+            if (!isReverse)
+            {
+                startPoint = q.MiddlePoint + q.DuctDirection * (q.HorizontalOffset + widthMiddleDuct / 2);
+                endPoint = q.DuctLine!.GetEndPoint(1);
+            }
+            else
+            {
+                startPoint = q.DuctLine!.GetEndPoint(0);
+                endPoint = q.MiddlePoint - q.DuctDirection * (q.HorizontalOffset + widthMiddleDuct / 2);
+            }
+            
             var duct = Duct.Create(doc,systemTypeId, ductTypeId, levelId, startPoint, endPoint);
             duct.LookupParameter("Width").Set(width);
             duct.LookupParameter("Height").Set(height);
@@ -96,24 +165,48 @@ namespace Model.Entity
             var duct1 = q.MainDuct1;
             var duct2 = q.MiddleDuct;
 
-            var startPoint = ((duct1.Location as LocationCurve)!.Curve).GetEndPoint(1);
-            var endPoint = ((duct2.Location as LocationCurve)!.Curve).GetEndPoint(0);
+            XYZ? startPoint = null;
+            XYZ? endPoint = null;
+
+            var isReverse = q.IsResverse;
+            if(!isReverse)
+            {
+                startPoint = ((duct1.Location as LocationCurve)!.Curve).GetEndPoint(1);
+                endPoint = ((duct2.Location as LocationCurve)!.Curve).GetEndPoint(0);
+            }
+            else
+            {
+                 
+                startPoint = ((duct2.Location as LocationCurve)!.Curve).GetEndPoint(1);
+                endPoint = ((duct1.Location as LocationCurve)!.Curve).GetEndPoint(0);
+            }
 
             var connectorDuct = q.CreateDuct(startPoint, endPoint);
 
             Connect2Ducts(duct1, connectorDuct);
             Connect2Ducts(connectorDuct, duct2);
-
             return connectorDuct;
         }
-
         public static Duct ConnectorDuct2(this DuctLevelingProcessor q)
         {
             var duct1 = q.MainDuct2;
             var duct2 = q.MiddleDuct;
 
-            var startPoint = ((duct1.Location as LocationCurve)!.Curve).GetEndPoint(0);
-            var endPoint = ((duct2.Location as LocationCurve)!.Curve).GetEndPoint(1);
+
+            XYZ? startPoint = null;
+            XYZ? endPoint = null;
+
+            var isReverse = q.IsResverse;
+            if (!isReverse)
+            {
+                startPoint = ((duct1.Location as LocationCurve)!.Curve).GetEndPoint(0);
+                endPoint = ((duct2.Location as LocationCurve)!.Curve).GetEndPoint(1);
+            }
+            else
+            {
+                startPoint = ((duct2.Location as LocationCurve)!.Curve).GetEndPoint(0);
+                endPoint = ((duct1.Location as LocationCurve)!.Curve).GetEndPoint(1);
+            }
 
             var connectorDuctt = q.CreateDuct(startPoint, endPoint);
 

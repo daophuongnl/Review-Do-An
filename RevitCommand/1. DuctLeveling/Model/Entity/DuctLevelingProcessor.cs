@@ -14,7 +14,12 @@ namespace Model.Entity
     {
         public Duct? Duct { get; set; }
 
-        public XYZ? Point { get; set; }
+        private XYZ? pickpoint;
+        public XYZ PickPoint
+        {
+            get => pickpoint??= this.GetPickPoint();
+            set => pickpoint = value;
+        }
 
         private XYZ? middlePoint;
         public XYZ MiddlePoint => this.middlePoint ??= this.GetMiddlePoint();
@@ -48,6 +53,17 @@ namespace Model.Entity
 
         private double? height;
         public double Height => this.height ??= this.Duct!.LookupParameter("Height").AsDouble();
+        //TH1 : cả 2 đầu đều đã kết nối connector
+        private Connector? startConnector;
+        public Connector StartConnector => this.startConnector ??= this.GetStartConnector();
+
+        private Connector? endConnector;
+        public Connector EndConnector =>this.endConnector??= this.GetEndConnector();
+
+        // TH2: 1 đầu có connector và 1 đầu ko 
+        private bool? isResverse;
+        public bool IsResverse => this.isResverse ??= this.GetIsResverse();
+        //
 
         private Duct? mainDuct1;
         public Duct MainDuct1 => this.mainDuct1 ??= this.GetMainDuct1();
