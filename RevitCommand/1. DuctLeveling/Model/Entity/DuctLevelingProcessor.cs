@@ -61,6 +61,9 @@ namespace Model.Entity
         private Connector? endConnector;
         public Connector EndConnector =>this.endConnector??= this.GetEndConnector();
 
+        private Connector? connectToEndConnector;
+        public Connector ConnectToEndConnector => this.connectToEndConnector ??= this.GetConnectToEndConnector();
+
         // TH2: 1 đầu có connector và 1 đầu ko 
         private bool? isResverse;
         public bool IsResverse => this.isResverse ??= this.GetIsResverse();

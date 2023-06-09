@@ -49,6 +49,17 @@ namespace Model.Entity
                 .FirstOrDefault(connector => connector.Origin.IsEqual(endPoint));
             return connector;
         }
+        public static Connector GetConnectToEndConnector(this DuctLevelingProcessor q)
+        {
+            var endConnector = q.EndConnector;
+            var duct = q.Duct;
+            if(endConnector == null )
+            {
+                return null;
+            }
+            return endConnector.AllRefs.Cast<Connector>()
+                .First(connector => connector.Owner.Id != duct.Id);
+        }
 
         // TH2: 1 đầu có connector và 1 đầu ko
         public static bool GetIsResverse(this DuctLevelingProcessor q)
@@ -144,6 +155,16 @@ namespace Model.Entity
             duct.LookupParameter("Width").Set(width);
             duct.LookupParameter("Height").Set(height);
 
+            duct.LookupParameter("Comments").Set("duct2");
+
+            //connect 
+            if(isReverse && q.EndConnector !=null)
+            {
+                var connector = duct.ConnectorManager.UnusedConnectors.Cast<Connector>()
+                    .FirstOrDefault(connector => connector.Origin.IsEqual(endPoint));
+                connector.ConnectTo(q.ConnectToEndConnector);
+            }    
+
             return duct;
 
         }
@@ -223,7 +244,11 @@ namespace Model.Entity
             using (var transition = new Transaction(doc,"Duct leveling"))
             {
                 transition.Start();
-               
+               if(!q.IsResverse && q.EndConnector!=null)
+                {
+                    q.EndConnector.DisconnectFrom(q.ConnectToEndConnector);
+                }    
+
                 var mainDuct2 = q.MainDuct2;
                 var mainDuct1= q.MainDuct1;
                 var middleDuct = q.MiddleDuct;
