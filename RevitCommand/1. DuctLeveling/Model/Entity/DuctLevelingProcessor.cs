@@ -44,9 +44,25 @@ namespace Model.Entity
         private ElementId? ductTypeId;
         public ElementId DuctTypeId => this.ductTypeId ??= this.Duct!.GetTypeId();
 
-        public double HorizontalOffset { get; set; } = 600.0.milimeter2Feet();
-
+        /// NHẬP GIÁ TRỊ
+        //public double HorizontalOffset { get; set; } = 600.0.milimeter2Feet();
         public double ZOffset { get; set; } = -500.0.milimeter2Feet();
+
+        private double? horizontalOffset;
+        public double HorizontalOffset
+        {
+            get => this.horizontalOffset ??= this.HorizontalOffset;
+            set => this.horizontalOffset = value.milimeter2Feet();
+        }
+
+        private double? zOffset;
+        public double ZOffset
+        {
+            get => this.zOffset ??= this.ZOffset;
+            set => this.zOffset = value.milimeter2Feet();
+        }
+
+
 
         private double? width;
         public double Width =>this.width??= this.Duct!.LookupParameter("Width").AsDouble();
