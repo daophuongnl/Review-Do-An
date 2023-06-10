@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:c="clr-namespace:Model.Control;assembly=BIMDev.ControlLibrary" mc:Ignorable="d"
-        Width="500" Height="200" Title="Up-Down Duct" WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
+        Width="500" Height="150" Title="Up-Down Duct" WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
         FontSize="16" 
         
              x:Name="root">
@@ -14,19 +14,26 @@
     </Window.Resources>-->
     <StackPanel Orientation="Vertical" Margin="10">
         <StackPanel Orientation="Horizontal" Margin="0 4">
-            <TextBlock Text="H Offset :"/>
-            <ComboBox ItemsSource="{Binding DuctTypes}" SelectedItem="{Binding Processor.DuctType}"
-                      Width="265" DisplayMemberPath="Name" Margin="15 0 0 0 "/>
+            <!--<TextBlock Text="H Offset :"/>-->
+            <StackPanel Orientation="Horizontal" Visibility="{Binding U_ValueVisibility}">
+                <Label Content="H Offset  :" VerticalAlignment="Center" Margin="5 0 0 0" FontWeight="DemiBold"/>
+                <TextBox Width="50" Margin="2 0 0 0" VerticalAlignment="Center" Text="{Binding U_HeightOffsetMM}"/>
+                <Label Content="mm" VerticalAlignment="Center"/>
+            </StackPanel>
 
+            <StackPanel Orientation="Horizontal" Visibility="{Binding U_ValueVisibility}">
+                <Label Content="Z Offset :" VerticalAlignment="Center" Margin="5 0 0 0" FontWeight="DemiBold"/>
+                <TextBox Width="50" Margin="2 0 0 0" VerticalAlignment="Center" Text="{Binding U_HeightOffsetMM}"/>
+                <Label Content="mm" VerticalAlignment="Center"/>
+            </StackPanel>
         </StackPanel>
 
-        <StackPanel Orientation="Horizontal" Margin="0 8">
-            <TextBlock Text="Z Offset :"/>
-            <ComboBox ItemsSource="{Binding DuctTypes}" SelectedItem="{Binding Processor.DuctType}"
-                      Width="265" DisplayMemberPath="Name" Margin="17 0 0 0 "/>
-
-        </StackPanel>
-
+        <StackPanel Orientation="Horizontal" Visibility="{Binding U_ValueVisibility}">
+                <Label Content="H1 Offset :" VerticalAlignment="Center" Margin="5 0 0 0" FontWeight="DemiBold"/>
+                <TextBox Width="50" Margin="2 0 0 0" VerticalAlignment="Center" Text="{Binding U_HeightOffsetMM}"/>
+                <Label Content="mm" VerticalAlignment="Center"/>
+            </StackPanel>
+        
         <Button Content="RUN" Margin="10 8 0 0" Padding=" 3 3 3 3 " Click="run_clicked" Width="383" />
 
     </StackPanel>

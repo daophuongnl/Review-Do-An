@@ -62,10 +62,30 @@ namespace Model.Entity
         }
 
         // TH2: 1 đầu có connector và 1 đầu ko
+        public static DuctLevelingMode GetMode (this DuctLevelingProcessor q)
+        {
+            var endConnector = q.EndConnector;
+            if (endConnector == null)
+            {
+                return DuctLevelingMode.Type1;
+            }
+            else
+            {
+                var startConnector = q.StartConnector;
+                if (startConnector == null)
+                {
+                    return DuctLevelingMode.Type2;
+                }
+                else
+                {
+                    return DuctLevelingMode.Type3;
+                }
+            }
+        }
+
+
         public static bool GetIsResverse(this DuctLevelingProcessor q)
         {
-
-
 
             //var duct = q.Duct!;
             //var line = q.DuctLine!;
@@ -122,7 +142,8 @@ namespace Model.Entity
 
             q.DuctLocation.Curve = Line.CreateBound(startPoint, endPoint);
             var duct = q.Duct!;
-            duct.LookupParameter("Comments").Set("duct1");
+
+            //duct.LookupParameter("Comments").Set("duct1");
 
             return q.Duct!;
         }
@@ -155,10 +176,10 @@ namespace Model.Entity
             duct.LookupParameter("Width").Set(width);
             duct.LookupParameter("Height").Set(height);
 
-            duct.LookupParameter("Comments").Set("duct2");
+            //duct.LookupParameter("Comments").Set("duct2");
 
             //connect 
-            if(isReverse && q.EndConnector !=null)
+            if(q.Mode == DuctLevelingMode.Type3)
             {
                 var connector = duct.ConnectorManager.UnusedConnectors.Cast<Connector>()
                     .FirstOrDefault(connector => connector.Origin.IsEqual(endPoint));
@@ -237,6 +258,7 @@ namespace Model.Entity
             return connectorDuctt;
         }
 
+
         // thực hiện câu lệnh
         public static void Do(this DuctLevelingProcessor q)
         {
@@ -244,10 +266,10 @@ namespace Model.Entity
             using (var transition = new Transaction(doc,"Duct leveling"))
             {
                 transition.Start();
-               if(!q.IsResverse && q.EndConnector!=null)
-                {
+               if(q.Mode == DuctLevelingMode.Type3)
+               {
                     q.EndConnector.DisconnectFrom(q.ConnectToEndConnector);
-                }    
+               }    
 
                 var mainDuct2 = q.MainDuct2;
                 var mainDuct1= q.MainDuct1;

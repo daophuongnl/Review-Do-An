@@ -67,6 +67,9 @@ namespace Model.Entity
         // TH2: 1 đầu có connector và 1 đầu ko 
         private bool? isResverse;
         public bool IsResverse => this.isResverse ??= this.GetIsResverse();
+
+        private DuctLevelingMode? mode;
+        public DuctLevelingMode Mode =>this.mode??= this.GetMode();
         //
 
         private Duct? mainDuct1;
