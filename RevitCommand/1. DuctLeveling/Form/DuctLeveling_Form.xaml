@@ -17,20 +17,20 @@
             <!--<TextBlock Text="H Offset :"/>-->
             <StackPanel Orientation="Horizontal" Visibility="{Binding U_ValueVisibility}">
                 <Label Content="H Offset  :" VerticalAlignment="Center" Margin="5 0 0 0" FontWeight="DemiBold"/>
-                <TextBox Width="50" Margin="2 0 0 0" VerticalAlignment="Center" Text="{Binding U_HeightOffsetMM}"/>
+                <TextBox Width="50" Margin="2 0 0 0" VerticalAlignment="Center" Text="{Binding }"/>
                 <Label Content="mm" VerticalAlignment="Center"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Visibility="{Binding U_ValueVisibility}">
                 <Label Content="Z Offset :" VerticalAlignment="Center" Margin="5 0 0 0" FontWeight="DemiBold"/>
-                <TextBox Width="50" Margin="2 0 0 0" VerticalAlignment="Center" Text="{Binding U_HeightOffsetMM}"/>
+                <TextBox Width="50" Margin="2 0 0 0" VerticalAlignment="Center" Text="{Binding }"/>
                 <Label Content="mm" VerticalAlignment="Center"/>
             </StackPanel>
         </StackPanel>
 
         <StackPanel Orientation="Horizontal" Visibility="{Binding U_ValueVisibility}">
                 <Label Content="H1 Offset :" VerticalAlignment="Center" Margin="5 0 0 0" FontWeight="DemiBold"/>
-                <TextBox Width="50" Margin="2 0 0 0" VerticalAlignment="Center" Text="{Binding U_HeightOffsetMM}"/>
+                <TextBox Width="50" Margin="2 0 0 0" VerticalAlignment="Center" Text="{Binding }"/>
                 <Label Content="mm" VerticalAlignment="Center"/>
             </StackPanel>
         
