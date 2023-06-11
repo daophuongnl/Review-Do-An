@@ -55,10 +55,10 @@ namespace Model.Entity
             var duct = q.Duct;
             if(endConnector == null )
             {
-                return null;
+                return null!;
             }
             return endConnector.AllRefs.Cast<Connector>()
-                .First(connector => connector.Owner.Id != duct.Id);
+                .First(connector => connector.Owner.Id != duct!.Id);
         }
 
         // TH2: 1 đầu có connector và 1 đầu ko
@@ -185,9 +185,7 @@ namespace Model.Entity
                     .FirstOrDefault(connector => connector.Origin.IsEqual(endPoint));
                 connector.ConnectTo(q.ConnectToEndConnector);
             }    
-
             return duct;
-
         }
         public static Duct GetMiddleDuct(this DuctLevelingProcessor q)
         {

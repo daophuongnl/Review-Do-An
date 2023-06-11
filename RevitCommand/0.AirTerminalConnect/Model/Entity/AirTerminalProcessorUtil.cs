@@ -17,7 +17,6 @@ namespace Model.Entity
     {
         //chỗ lưu trữ các đối tượng Revit
         private static RevitData revitData => RevitData.Instance;
-
         private static AirTerminalProcessor_Data data=> AirTerminalProcessor_Data.Instance;
 
         public static Connector GetAirTerminalConnector(this AirTerminalProcessor q)

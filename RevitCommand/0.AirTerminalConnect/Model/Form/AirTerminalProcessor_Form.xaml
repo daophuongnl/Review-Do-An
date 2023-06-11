@@ -15,7 +15,7 @@
     <StackPanel Orientation="Vertical" Margin="10">
         <StackPanel Orientation="Horizontal" Margin="0 4">
             <TextBlock Text="Miệng gió:"/>
-            <TextBlock Text="{Binding Processor.AirTerminal.Symbol.FamilyName}"/>
+            <!--<TextBlock Text="{Binding Processor.AirTerminal.Symbol.FamilyName}"/>-->
         </StackPanel>
 
         <StackPanel Orientation="Horizontal" Margin="0 8">

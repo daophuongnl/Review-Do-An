@@ -32,6 +32,7 @@ namespace Model.Form
 
         private void run_clicked(object sender, RoutedEventArgs e)
         {
+            this.Close();
             data.Processor.Do();
         }
     }

@@ -43,6 +43,8 @@ namespace Model.Entity
         public FamilyInstance Tap     //phương thức truy xuất
             => this.tap ??=this.GetTap();
 
+
+
         private FlexDuctType? flexDuctType;
         public FlexDuctType? FlexDuctType
         {

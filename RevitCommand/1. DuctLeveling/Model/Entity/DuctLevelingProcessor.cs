@@ -47,22 +47,24 @@ namespace Model.Entity
         /// NHẬP GIÁ TRỊ
         //public double HorizontalOffset { get; set; } = 600.0.milimeter2Feet();
         public double ZOffset { get; set; } = -500.0.milimeter2Feet();
+        public double Width_MiddleDuct { get; set; } = 600.0.milimeter2Feet();
 
-        private double? horizontalOffset;
-        public double HorizontalOffset
-        {
-            get => this.horizontalOffset ??= this.HorizontalOffset;
-            set => this.horizontalOffset = value.milimeter2Feet();
-        }
 
-        private double? zOffset;
-        public double ZOffset
+        public double HorizontalOffset = 600.0.milimeter2Feet();
+        public double HorizontalOffsetMM
         {
-            get => this.zOffset ??= this.ZOffset;
-            set => this.zOffset = value.milimeter2Feet();
+            get => this.HorizontalOffset.feet2Milimeter();
+            set => this.HorizontalOffset = value.milimeter2Feet();
         }
 
 
+
+        //private double? zOffset;
+        //public double ZOffset
+        //{
+        //    get => this.zOffset ??= this.ZOffset;
+        //    set => this.zOffset = value.milimeter2Feet();
+        //}
 
         private double? width;
         public double Width =>this.width??= this.Duct!.LookupParameter("Width").AsDouble();
@@ -94,11 +96,8 @@ namespace Model.Entity
         private Duct? mainDuct2;
         public Duct MainDuct2 => this.mainDuct2??= this.GetMainDuct2();
 
-        public double Width_MiddleDuct { get; set; } = 600.0.milimeter2Feet();
-
         private Duct? middleDuct;
         public Duct MiddleDuct => this.middleDuct ??= this.GetMiddleDuct();
-
 
         private Duct? connectorDuct1;
         public Duct ConnectorDuct1 => this.connectorDuct1 ??= this.ConnectorDuct1();
