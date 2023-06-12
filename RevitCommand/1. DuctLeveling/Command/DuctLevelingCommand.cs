@@ -20,20 +20,20 @@ namespace Model.RevitCommand
         private DuctLevelingProcessor_Data data => DuctLevelingProcessor_Data.Instance;
         public override void Execute()
         {
-            var processor = new DuctLevelingProcessor
+            //var processor = new DuctLevelingProcessor
             {
-                //var processor = data.Processor;
-                //processor.Duct = sel.PickElement<Duct>();
+                var processor = data.Processor;
+                processor.Duct = sel.PickElement<Duct>();
+
                 //processor.Point = sel.PickPoint();
 
-
-                Duct = sel.PickElement<Duct>(),
+                //Duct = sel.PickElement<Duct>()
                 //PickPoint = sel.PickPoint()
 
-            };
-            processor.Do();
-            //var form = data.Form;
-            //form.ShowDialog();
+            }
+            //processor.Do();
+            var form = data.Form;
+            form.ShowDialog();
         }
     }
 }

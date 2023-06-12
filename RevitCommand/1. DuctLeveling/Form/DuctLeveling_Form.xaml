@@ -5,11 +5,12 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:c="clr-namespace:Model.Control;assembly=BIMDev.ControlLibrary" 
-        xmlns:data="clr-namespace:Model.Data" d:DataContext="{d:DesignInstance Type=Data:DuctLevelingProcessor_Data}" mc:Ignorable="d"
-        Width="500" Height="150" Title="Up-Down Duct" WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
+        xmlns:Data="clr-namespace:Model.Data" d:DataContext="{d:DesignInstance Type=Data:DuctLevelingProcessor_Data}" mc:Ignorable="d"
+        Title="Up-Down Duct" WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
         FontSize="16" 
+        SizeToContent="WidthAndHeight"
         
-             x:Name="root">
+        x:Name="root">
     <!--<Window.Resources>
         <ResourceDictionary Source="/BIMDev.ControlLibrary;component/Model/Style/Styles.xaml"/>
     </Window.Resources>-->
