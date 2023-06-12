@@ -16,6 +16,9 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Model.Entity;
 using Model.Data;
+using SingleData;
+using Utility;
+using Autodesk.Revit.DB.Mechanical;
 
 namespace Model.Form
 {
@@ -25,6 +28,7 @@ namespace Model.Form
     public partial class DuctLeveling_Form : System.Windows.Window
     {
         private DuctLevelingProcessor_Data data => DuctLevelingProcessor_Data.Instance;
+        private RevitData revitData => RevitData.Instance;
         public DuctLeveling_Form()
         {
             InitializeComponent();
@@ -32,8 +36,13 @@ namespace Model.Form
 
         private void run_clicked(object sender, RoutedEventArgs e)
         {
-            this.Close();
-            data.Processor.Do();
+            //this.Close();
+            //var process = data.Processor = new DuctLevelingProcessor();
+            //process.Duct = revitData.Selection.PickElement<Duct>();
+            //process.PickPoint = revitData.Selection.PickPoint();
+
+            //process.Do();
+            revitData.ExternalEvent!.Raise();
         }
     }
 }

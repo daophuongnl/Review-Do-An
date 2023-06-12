@@ -18,22 +18,56 @@ namespace Model.RevitCommand
     public class DuctLevelingCommand : RevitCommand
     {
         private DuctLevelingProcessor_Data data => DuctLevelingProcessor_Data.Instance;
+        //protected override bool HasExternalEvent => true;
+        //protected override bool IsAutoDisposed => false;
+
         public override void Execute()
         {
             //var processor = new DuctLevelingProcessor
-            {
-                var processor = data.Processor;
-                processor.Duct = sel.PickElement<Duct>();
+            //{
+            //    var processor = data.Processor;
+            //    processor.Duct = sel.PickElement<Duct>();
+            //    processor.PickPoint = sel.PickPoint();
 
-                //processor.Point = sel.PickPoint();
+            //    //Duct = sel.PickElement<Duct>()
+            //    //PickPoint = sel.PickPoint()
 
-                //Duct = sel.PickElement<Duct>()
-                //PickPoint = sel.PickPoint()
+            //}
+            //processor.Do();
+
+
+            //THIẾT LẬP SỰ KIỆN
+            //revitData.ExternalEventHandler.Action = () =>
+            //{
+            //    var process = data.Processor = new DuctLevelingProcessor();
+
+            //    process.Duct = revitData.Selection.PickElement<Duct>();
+            //    process.PickPoint = revitData.Selection.PickPoint();
+            //    process.Do();
+            //};
+
+            var form = data.Form;
+            form.Show();
+
+            while (true)
+            { 
+                try
+                {
+                    var duct = sel.PickElement<Duct>();
+                    var process = data.Processor = new DuctLevelingProcessor();
+                    {
+                        Duct = duct
+                    };
+                    process.Do();
+                }
+                catch (Autodesk.Revit.Exceptions.OperationCanceledException)
+                {
+                    break;
+                }
+
 
             }
-            //processor.Do();
-            var form = data.Form;
-            form.ShowDialog();
+            form.Close();
         }
     }
 }

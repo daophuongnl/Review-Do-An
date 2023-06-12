@@ -7,7 +7,7 @@
         xmlns:c="clr-namespace:Model.Control;assembly=BIMDev.ControlLibrary" 
         xmlns:Data="clr-namespace:Model.Data" d:DataContext="{d:DesignInstance Type=Data:DuctLevelingProcessor_Data}" mc:Ignorable="d"
         Title="Up-Down Duct" WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
-        FontSize="16" 
+        FontSize="16" Topmost="True"
         SizeToContent="WidthAndHeight"
         
         x:Name="root">
@@ -24,17 +24,17 @@
 
             <StackPanel Orientation="Horizontal">
                 <Label Content="Z Offset :" VerticalAlignment="Center" Margin="5 0 0 0" FontWeight="DemiBold"/>
-                <!--<TextBox Width="50" Margin="2 0 0 0" VerticalAlignment="Center" Text="{Binding }"/>-->
+                <TextBox Width="50" Margin="2 0 0 0" VerticalAlignment="Center" Text="{Binding Processor.ZOffsetMM}"/>
                 <Label Content="mm" VerticalAlignment="Center"/>
             </StackPanel>
         </StackPanel>
 
         <StackPanel Orientation="Horizontal">
                 <Label Content="H1 Offset :" VerticalAlignment="Center" Margin="5 0 0 0" FontWeight="DemiBold"/>
-                <!--<TextBox Width="50" Margin="2 0 0 0" VerticalAlignment="Center" Text="{Binding }"/>-->
-                <Label Content="mm" VerticalAlignment="Center"/>
+            <TextBox Width="50" Margin="2 0 0 0" VerticalAlignment="Center" Text="{Binding Processor.Width_MiddleDuctMM}"/>
+            <Label Content="mm" VerticalAlignment="Center"/>
         </StackPanel>
-        
+
         <Button Content="RUN" Margin="10 8 0 0" Padding=" 3 3 3 3 " Click="run_clicked" Width="383" />
 
     </StackPanel>

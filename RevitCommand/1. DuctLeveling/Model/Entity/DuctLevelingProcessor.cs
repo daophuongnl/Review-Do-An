@@ -46,8 +46,8 @@ namespace Model.Entity
 
         /// NHẬP GIÁ TRỊ
         //public double HorizontalOffset { get; set; } = 600.0.milimeter2Feet();
-        public double ZOffset { get; set; } = -500.0.milimeter2Feet();
-        public double Width_MiddleDuct { get; set; } = 600.0.milimeter2Feet();
+        //public double ZOffset { get; set; } = -500.0.milimeter2Feet();
+        //public double Width_MiddleDuct { get; set; } = 600.0.milimeter2Feet();
 
 
         public double HorizontalOffset = 600.0.milimeter2Feet();
@@ -56,7 +56,18 @@ namespace Model.Entity
             get => this.HorizontalOffset.feet2Milimeter();
             set => this.HorizontalOffset = value.milimeter2Feet();
         }
-
+        public double ZOffset = -500.0.milimeter2Feet();
+        public double ZOffsetMM
+        {
+            get => this.ZOffset.feet2Milimeter();
+            set => this.ZOffset = value.milimeter2Feet();
+        }
+        public double Width_MiddleDuct = 600.0.milimeter2Feet();
+        public double Width_MiddleDuctMM
+        {
+            get => this.Width_MiddleDuct.feet2Milimeter();
+            set => this.Width_MiddleDuct = value.milimeter2Feet();
+        }
 
 
         //private double? zOffset;
