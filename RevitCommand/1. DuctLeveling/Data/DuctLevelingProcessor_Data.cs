@@ -24,13 +24,14 @@ namespace Model.Data
 
         //processor
         private DuctLevelingProcessor? processor;
-        //public DuctLevelingProcessor Processor => this.processor ??= new DuctLevelingProcessor();
+        public DuctLevelingProcessor Processor => this.processor ??= new DuctLevelingProcessor();
 
-        public DuctLevelingProcessor Processor
-        {
-            get => processor!;
-            set => processor = value;
-        }
+
+        //public DuctLevelingProcessor Processor
+        //{
+        //    get => processor!;
+        //    set => processor = value;
+        //}
 
     }
 }

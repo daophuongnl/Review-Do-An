@@ -31,7 +31,6 @@ namespace Model.RevitCommand
 
             //    //Duct = sel.PickElement<Duct>()
             //    //PickPoint = sel.PickPoint()
-
             //}
             //processor.Do();
 
@@ -47,27 +46,27 @@ namespace Model.RevitCommand
             //};
 
             var form = data.Form;
-            form.Show();
+            form.ShowDialog();
 
-            while (true)
-            { 
-                try
-                {
-                    var duct = sel.PickElement<Duct>();
-                    var process = data.Processor = new DuctLevelingProcessor();
-                    {
-                        Duct = duct
-                    };
-                    process.Do();
-                }
-                catch (Autodesk.Revit.Exceptions.OperationCanceledException)
-                {
-                    break;
-                }
+            //while (true)
+            //{ 
+            //    try
+            //    {
+            //        var duct = sel.PickElement<Duct>();
+            //        var process = data.Processor = new DuctLevelingProcessor();
+            //        {
+            //            Duct = duct
+            //        };
+            //        process.Do();
+            //    }
+            //    catch (Autodesk.Revit.Exceptions.OperationCanceledException)
+            //    {
+            //        break;
+            //    }
 
 
-            }
-            form.Close();
+            //}
+            //form.Close();
         }
     }
 }

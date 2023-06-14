@@ -19,6 +19,7 @@ using Model.Data;
 using SingleData;
 using Utility;
 using Autodesk.Revit.DB.Mechanical;
+using System.Diagnostics;
 
 namespace Model.Form
 {
@@ -34,15 +35,23 @@ namespace Model.Form
             InitializeComponent();
         }
 
+
+
         private void run_clicked(object sender, RoutedEventArgs e)
         {
-            //this.Close();
+            this.Close();
             //var process = data.Processor = new DuctLevelingProcessor();
+
+            data.Processor.Duct = revitData.Selection.PickElement<Duct>();
+            data.Processor.PickPoint = revitData.Selection.PickPoint();
+
+            data.Processor.Do();
+
             //process.Duct = revitData.Selection.PickElement<Duct>();
             //process.PickPoint = revitData.Selection.PickPoint();
-
+          
             //process.Do();
-            revitData.ExternalEvent!.Raise();
+            //revitData.ExternalEvent!.Raise();
         }
     }
 }
