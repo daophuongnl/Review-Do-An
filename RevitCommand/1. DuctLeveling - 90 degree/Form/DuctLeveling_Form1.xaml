@@ -1,12 +1,12 @@
-﻿<Window x:Class="Model.Form.DuctLeveling_Form"
+﻿<Window x:Class="Model.Form.DuctLeveling_Form1"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:c="clr-namespace:Model.Control;assembly=BIMDev.ControlLibrary" 
-        xmlns:data="clr-namespace:Model.Data" d:DataContext="{d:DesignInstance Type=data:DuctLevelingProcessor_Data}" mc:Ignorable="d"
-        Title="Up-Down Duct" WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
+        xmlns:data1="clr-namespace:Model.Data1" d:DataContext="{d:DesignInstance Type=data1:DuctLevelingProcessor_Data1}" mc:Ignorable="d"
+        Title="Up-Down Duct 90 degree" WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
         FontSize="16" Topmost="True"
         SizeToContent="WidthAndHeight"
         
@@ -18,20 +18,20 @@
         <StackPanel Orientation="Horizontal" Margin="0 4">
             <StackPanel Orientation="Horizontal">
                 <Label Content="H Offset  :" VerticalAlignment="Center" Margin="5 0 0 0" FontWeight="DemiBold"/>
-                <TextBox Width="50" Margin="2 0 0 0" VerticalAlignment="Center" Text="{Binding Processor.HorizontalOffsetMM}"/>
+                <TextBox Width="50" Margin="2 0 0 0" VerticalAlignment="Center" Text="{Binding Processor1.HorizontalOffsetMM}"/>
                 <Label Content="mm" VerticalAlignment="Center"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
                 <Label Content="Z Offset :" VerticalAlignment="Center" Margin="5 0 0 0" FontWeight="DemiBold"/>
-                <TextBox Width="50" Margin="2 0 0 0" VerticalAlignment="Center" Text="{Binding Processor.ZOffsetMM}"/>
+                <TextBox Width="50" Margin="2 0 0 0" VerticalAlignment="Center" Text="{Binding Processor1.ZOffsetMM}"/>
                 <Label Content="mm" VerticalAlignment="Center"/>
             </StackPanel>
         </StackPanel>
 
         <StackPanel Orientation="Horizontal">
                 <Label Content="H1 Offset :" VerticalAlignment="Center" Margin="5 0 0 0" FontWeight="DemiBold"/>
-            <TextBox Width="50" Margin="2 0 0 0" VerticalAlignment="Center" Text="{Binding Processor.Width_MiddleDuctMM}"/>
+            <TextBox Width="50" Margin="2 0 0 0" VerticalAlignment="Center" Text="{Binding Processor1.Width_MiddleDuctMM}"/>
             <Label Content="mm" VerticalAlignment="Center"/>
         </StackPanel>
 
@@ -42,7 +42,7 @@
             </Image.Source>
         </Image>-->
 
-        <Button Content="RUN" Margin="10 8 0 0" Padding=" 3 3 3 3 " Click="run_clicked" Width="383" />
+        <Button Content="Run" Click="run_Clicked1"/>
 
     </StackPanel>
 </Window>

@@ -1,6 +1,6 @@
 ﻿using Autodesk.Revit.DB;
 using Autodesk.Revit.DB.Mechanical;
-using Model.Entity;
+using Model.Entity1;
 using SingleData;
 using System;
 using System.Collections.Generic;
@@ -9,25 +9,25 @@ using System.Text;
 using System.Threading.Tasks;
 using Utility;
 
-namespace Model.Entity
+namespace Model.Entity1
 {
-    public static class DuctLevelingProcessorUtil1
+    public static class DuctLevelingProcessorUtil
     {
         private static RevitData revitData => RevitData.Instance;
 
-        public static LocationCurve GetDuctLocation(this DuctLevelingProcessor q)
+        public static LocationCurve GetDuctLocation(this DuctLevelingProcessor1 q)
         {
             var duct = q.Duct;
             return (duct!.Location as LocationCurve)!;
         }
 
-        public static Line GetDuctLine(this DuctLevelingProcessor q)
+        public static Line GetDuctLine(this DuctLevelingProcessor1 q)
         {
             var duct = q.Duct;
             return ((duct!.Location as LocationCurve)!.Curve as Line)!;
         }
         //TH1 : cả 2 đầu đều đã kết nối connector
-        public static Connector GetStartConnector(this DuctLevelingProcessor q)
+        public static Connector GetStartConnector(this DuctLevelingProcessor1 q)
         {
             var duct = q.Duct!;
             var line = q.DuctLine!;
@@ -38,7 +38,7 @@ namespace Model.Entity
                 .FirstOrDefault(connector => connector.Origin.IsEqual(startPoint));
             return connector;
         }
-        public static Connector GetEndConnector(this DuctLevelingProcessor q)
+        public static Connector GetEndConnector(this DuctLevelingProcessor1 q)
         {
             var duct = q.Duct!;
             var line = q.DuctLine!;
@@ -49,7 +49,7 @@ namespace Model.Entity
                 .FirstOrDefault(connector => connector.Origin.IsEqual(endPoint));
             return connector;
         }
-        public static Connector GetConnectToEndConnector(this DuctLevelingProcessor q)
+        public static Connector GetConnectToEndConnector(this DuctLevelingProcessor1 q)
         {
             var endConnector = q.EndConnector;
             var duct = q.Duct;
@@ -62,29 +62,29 @@ namespace Model.Entity
         }
 
         // TH2: 1 đầu có connector và 1 đầu ko
-        public static DuctLevelingMode GetMode (this DuctLevelingProcessor q)
+        public static DuctLevelingMode1 GetMode (this DuctLevelingProcessor1 q)
         {
             var endConnector = q.EndConnector;
             if (endConnector == null)
             {
-                return DuctLevelingMode.Type1;
+                return DuctLevelingMode1.Type1;
             }
             else
             {
                 var startConnector = q.StartConnector;
                 if (startConnector == null)
                 {
-                    return DuctLevelingMode.Type2;
+                    return DuctLevelingMode1.Type2;
                 }
                 else
                 {
-                    return DuctLevelingMode.Type3;
+                    return DuctLevelingMode1.Type3;
                 }
             }
         }
 
 
-        public static bool GetIsResverse(this DuctLevelingProcessor q)
+        public static bool GetIsResverse(this DuctLevelingProcessor1 q)
         {
 
             //var duct = q.Duct!;
@@ -98,31 +98,31 @@ namespace Model.Entity
             return q.EndConnector != null && q.StartConnector == null;
         }
 
-        public static XYZ GetDuctDirection (this DuctLevelingProcessor q) 
+        public static XYZ GetDuctDirection (this DuctLevelingProcessor1 q) 
         {
             return q.DuctLine!.Direction;
         }
-        public static ElementId GetLevelId(this DuctLevelingProcessor q)
+        public static ElementId GetLevelId(this DuctLevelingProcessor1 q)
         {
             return q.Duct!.LookupParameter("Reference Level").AsElementId();
         }
-        public static ElementId GetSystemTypeId(this DuctLevelingProcessor q)
+        public static ElementId GetSystemTypeId(this DuctLevelingProcessor1 q)
         {
             return q.Duct!.MEPSystem.GetTypeId();
         }
 
-        public static XYZ GetPickPoint(this DuctLevelingProcessor q)
+        public static XYZ GetPickPoint(this DuctLevelingProcessor1 q)
         {
             return q.DuctLine!.GetCenterPoint();
         }
-        public static XYZ GetMiddlePoint(this DuctLevelingProcessor q)
+        public static XYZ GetMiddlePoint(this DuctLevelingProcessor1 q)
         {
 
             var point = q.PickPoint;
             return q.DuctLine!.GetProjectPoint(point!);
 
         }
-        public static Duct GetMainDuct1(this DuctLevelingProcessor q)
+        public static Duct GetMainDuct(this DuctLevelingProcessor1 q)
         {
             var widthMiddleDuct = q.Width_MiddleDuct;
             XYZ? startPoint = null;
@@ -132,11 +132,11 @@ namespace Model.Entity
             if(!isReverse)
             {
                 startPoint = q.DuctLine!.GetEndPoint(0);
-                endPoint = q.MiddlePoint - q.DuctDirection * (q.HorizontalOffset + widthMiddleDuct / 2);
+                endPoint = q.MiddlePoint - q.DuctDirection * (q.HorizontalOffset); /*+ widthMiddleDuct / 2);*/
             }
             else
             {
-                startPoint = q.MiddlePoint + q.DuctDirection * (q.HorizontalOffset + widthMiddleDuct / 2);
+                startPoint = q.MiddlePoint + q.DuctDirection * (q.HorizontalOffset); /*+ widthMiddleDuct / 2);*/
                 endPoint = q.DuctLine!.GetEndPoint(1);
             }
 
@@ -147,7 +147,7 @@ namespace Model.Entity
 
             return q.Duct!;
         }
-        public static Duct GetMainDuct2(this DuctLevelingProcessor q)
+        public static Duct GetMainDuct2(this DuctLevelingProcessor1 q)
         {
             var doc = revitData.Document;
             var systemTypeId = q.SystemTypeId;
@@ -163,13 +163,13 @@ namespace Model.Entity
             var isReverse = q.IsResverse;
             if (!isReverse)
             {
-                startPoint = q.MiddlePoint + q.DuctDirection * (q.HorizontalOffset + widthMiddleDuct / 2);
+                startPoint = q.MiddlePoint + q.DuctDirection * (q.HorizontalOffset); /*+ widthMiddleDuct / 2);*/
                 endPoint = q.DuctLine!.GetEndPoint(1);
             }
             else
             {
                 startPoint = q.DuctLine!.GetEndPoint(0);
-                endPoint = q.MiddlePoint - q.DuctDirection * (q.HorizontalOffset +widthMiddleDuct / 2);
+                endPoint = q.MiddlePoint - q.DuctDirection * (q.HorizontalOffset); /*+ widthMiddleDuct / 2);*/
             }
             
             var duct = Duct.Create(doc,systemTypeId, ductTypeId, levelId, startPoint, endPoint);
@@ -179,7 +179,7 @@ namespace Model.Entity
             //duct.LookupParameter("Comments").Set("duct2");
 
             //connect 
-            if(q.Mode == DuctLevelingMode.Type3)
+            if(q.Mode == DuctLevelingMode1.Type3)
             {
                 var connector = duct.ConnectorManager.UnusedConnectors.Cast<Connector>()
                     .FirstOrDefault(connector => connector.Origin.IsEqual(endPoint));
@@ -187,20 +187,32 @@ namespace Model.Entity
             }    
             return duct;
         }
-        public static Duct GetMiddleDuct(this DuctLevelingProcessor q)
+        public static Duct GetMiddleDuct(this DuctLevelingProcessor1 q)
         {
-            
+            var doc = revitData.Document;
             var widthMiddleDuct = q.Width_MiddleDuct;
             var midPoint = q.MiddlePoint;
             var dir = q.DuctDirection;
 
-            var zOff = q.ZOffset;
-            var startPoint = (midPoint - dir * widthMiddleDuct / 2) + XYZ.BasisZ * zOff;
-            var endPoint = (midPoint + dir * widthMiddleDuct / 2) + XYZ.BasisZ * zOff;
+          
+            var systemTypeId = q.SystemTypeId;
+            var ductTypeId = q.DuctTypeId;
+            var levelId = q.LevelId;
+           
+            var width = q.Width;
+            var height = q.Height;
 
-            return q.CreateDuct(startPoint, endPoint);
+            var zOff = q.ZOffset;
+            var startPoint = (midPoint - dir * widthMiddleDuct /*/ 2*/) + XYZ.BasisZ * zOff;
+            var endPoint = (midPoint + dir * widthMiddleDuct /*/ 2*/) + XYZ.BasisZ * zOff;
+
+
+            var duct = Duct.Create(doc, systemTypeId, ductTypeId, levelId, startPoint, endPoint);
+            duct.LookupParameter("Width").Set(width);
+            duct.LookupParameter("Height").Set(height);
+            return duct;
         }
-        public static Duct ConnectorDuct1(this DuctLevelingProcessor q)
+        public static Duct ConnectorDuct1(this DuctLevelingProcessor1 q)
         {
             var duct1 = q.MainDuct1;
             var duct2 = q.MiddleDuct;
@@ -227,7 +239,7 @@ namespace Model.Entity
             Connect2Ducts(connectorDuct, duct2);
             return connectorDuct;
         }
-        public static Duct ConnectorDuct2(this DuctLevelingProcessor q)
+        public static Duct ConnectorDuct2(this DuctLevelingProcessor1 q)
         {
             var duct1 = q.MainDuct2;
             var duct2 = q.MiddleDuct;
@@ -258,13 +270,13 @@ namespace Model.Entity
 
 
         // thực hiện câu lệnh
-        public static void Do(this DuctLevelingProcessor q)
+        public static void Do1(this DuctLevelingProcessor1 q)
         {
             var doc = revitData.Document;
-            using (var transition = new Transaction(doc,"Duct leveling"))
+            using (var transition = new Transaction(doc,"Duct leveling1"))
             {
                 transition.Start();
-               if(q.Mode == DuctLevelingMode.Type3)
+               if(q.Mode == DuctLevelingMode1.Type3)
                {
                     q.EndConnector.DisconnectFrom(q.ConnectToEndConnector);
                }    
@@ -280,7 +292,7 @@ namespace Model.Entity
             }
         }
 
-        private static Duct CreateDuct(this DuctLevelingProcessor q,XYZ startPoint,XYZ endPoint)
+        private static Duct CreateDuct(this DuctLevelingProcessor1 q,XYZ startPoint,XYZ endPoint)
         {
             var doc = revitData.Document;
             var systemTypeId = q.SystemTypeId;
@@ -291,8 +303,8 @@ namespace Model.Entity
             var height = q.Height;
 
             var duct = Duct.Create(doc, systemTypeId, ductTypeId, levelId, startPoint, endPoint);
-            duct.LookupParameter("Width").Set(width);
-            duct.LookupParameter("Height").Set(height);
+            duct.LookupParameter("Width").Set(height);
+            duct.LookupParameter("Height").Set(width);
 
             return duct;
         }

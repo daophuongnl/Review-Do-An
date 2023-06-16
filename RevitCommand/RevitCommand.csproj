@@ -16,6 +16,7 @@
 	</ItemGroup>
 	<ItemGroup>
 		<None Remove="0.AirTerminalConnect\Model\Form\AirTerminalProcessor_Form.xaml" />
+		<None Remove="1. DuctLeveling - 90 degree\Form\DuctLeveling_Form1.xaml" />
 		<None Remove="1. DuctLeveling\Form\DuctLeveling_Form.xaml" />
 		<None Remove="Library\Image\addsub.png" />
 		<None Remove="Library\Image\add_2.png" />
@@ -245,6 +246,10 @@
 	  <Page Include="0.AirTerminalConnect\Model\Form\AirTerminalProcessor_Form.xaml">
 	    <Generator>XamlIntelliSenseFileGenerator</Generator>
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </Page>
+	  <Page Include="1. DuctLeveling - 90 degree\Form\DuctLeveling_Form1.xaml">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	    <Generator>XamlIntelliSenseFileGenerator</Generator>
 	  </Page>
 	  <Page Include="1. DuctLeveling\Form\DuctLeveling_Form.xaml">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
