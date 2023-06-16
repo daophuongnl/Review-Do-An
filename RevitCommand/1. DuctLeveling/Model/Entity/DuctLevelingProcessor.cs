@@ -50,13 +50,13 @@ namespace Model.Entity
         //public double Width_MiddleDuct { get; set; } = 600.0.milimeter2Feet();
 
 
-        public double HorizontalOffset = 600.0.milimeter2Feet();
-        public double HorizontalOffsetMM
+        public double value = 500.0.milimeter2Feet();
+        public double valueMM
         {
-            get => this.HorizontalOffset.feet2Milimeter();
-            set => this.HorizontalOffset = value.milimeter2Feet();
+            get => this.value.feet2Milimeter();
+            set => this.value = value.milimeter2Feet();
         }
-        public double ZOffset = -500.0.milimeter2Feet();
+        public double ZOffset = 500.0.milimeter2Feet();
         public double ZOffsetMM
         {
             get => this.ZOffset.feet2Milimeter();

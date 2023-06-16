@@ -132,11 +132,11 @@ namespace Model.Entity
             if(!isReverse)
             {
                 startPoint = q.DuctLine!.GetEndPoint(0);
-                endPoint = q.MiddlePoint - q.DuctDirection * (q.HorizontalOffset + widthMiddleDuct / 2);
+                endPoint = q.MiddlePoint - (q.DuctDirection * (q.Width_MiddleDuct / 2 + q.value));
             }
             else
             {
-                startPoint = q.MiddlePoint + q.DuctDirection * (q.HorizontalOffset + widthMiddleDuct / 2);
+                startPoint = q.MiddlePoint + (q.DuctDirection * (q.Width_MiddleDuct / 2 + q.value));
                 endPoint = q.DuctLine!.GetEndPoint(1);
             }
 
@@ -163,13 +163,13 @@ namespace Model.Entity
             var isReverse = q.IsResverse;
             if (!isReverse)
             {
-                startPoint = q.MiddlePoint + q.DuctDirection * (q.HorizontalOffset + widthMiddleDuct / 2);
+                startPoint = q.MiddlePoint + (q.DuctDirection * (q.Width_MiddleDuct / 2 + q.value));
                 endPoint = q.DuctLine!.GetEndPoint(1);
             }
             else
             {
                 startPoint = q.DuctLine!.GetEndPoint(0);
-                endPoint = q.MiddlePoint - q.DuctDirection * (q.HorizontalOffset +widthMiddleDuct / 2);
+                endPoint = q.MiddlePoint - (q.DuctDirection * (q.Width_MiddleDuct / 2 + q.value));
             }
             
             var duct = Duct.Create(doc,systemTypeId, ductTypeId, levelId, startPoint, endPoint);

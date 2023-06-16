@@ -6,7 +6,7 @@
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:c="clr-namespace:Model.Control;assembly=BIMDev.ControlLibrary" 
         xmlns:data="clr-namespace:Model.Data" d:DataContext="{d:DesignInstance Type=data:DuctLevelingProcessor_Data}" mc:Ignorable="d"
-        Title="Up-Down Duct" WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
+        Title="Up-Down Duct 45 Degree" WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
         FontSize="16" Topmost="True"
         SizeToContent="WidthAndHeight"
         
@@ -15,25 +15,27 @@
         <ResourceDictionary Source="/BIMDev.ControlLibrary;component/Model/Style/Styles.xaml"/>
     </Window.Resources>-->
     <StackPanel Orientation="Vertical" Margin="10">
+        <StackPanel Orientation="Horizontal">
+            <Label Content="H1 Offset :" VerticalAlignment="Center" Margin="5 0 0 0" FontWeight="DemiBold"/>
+            <TextBox Width="50" Margin="2 0 0 0" VerticalAlignment="Center" Text="{Binding Processor.Width_MiddleDuctMM}"/>
+            <Label Content="mm" VerticalAlignment="Center"/>
+        </StackPanel>
+        
         <StackPanel Orientation="Horizontal" Margin="0 4">
             <StackPanel Orientation="Horizontal">
-                <Label Content="H Offset  :" VerticalAlignment="Center" Margin="5 0 0 0" FontWeight="DemiBold"/>
-                <TextBox Width="50" Margin="2 0 0 0" VerticalAlignment="Center" Text="{Binding Processor.HorizontalOffsetMM}"/>
-                <Label Content="mm" VerticalAlignment="Center"/>
-            </StackPanel>
-
-            <StackPanel Orientation="Horizontal">
-                <Label Content="Z Offset :" VerticalAlignment="Center" Margin="5 0 0 0" FontWeight="DemiBold"/>
+                <Label Content="Z Offset   :" VerticalAlignment="Center" Margin="5 0 0 0" FontWeight="DemiBold"/>
                 <TextBox Width="50" Margin="2 0 0 0" VerticalAlignment="Center" Text="{Binding Processor.ZOffsetMM}"/>
                 <Label Content="mm" VerticalAlignment="Center"/>
             </StackPanel>
         </StackPanel>
-
         <StackPanel Orientation="Horizontal">
-                <Label Content="H1 Offset :" VerticalAlignment="Center" Margin="5 0 0 0" FontWeight="DemiBold"/>
-            <TextBox Width="50" Margin="2 0 0 0" VerticalAlignment="Center" Text="{Binding Processor.Width_MiddleDuctMM}"/>
+            <Label Content="Value (+) :" VerticalAlignment="Center" Margin="6 0 0 0" FontWeight="DemiBold"/>
+            <TextBox Width="50" Margin="2 0 0 0" VerticalAlignment="Center" Text="{Binding Processor.valueMM}"/>
             <Label Content="mm" VerticalAlignment="Center"/>
         </StackPanel>
+
+
+
 
 
         <!--<Image Width="300">
