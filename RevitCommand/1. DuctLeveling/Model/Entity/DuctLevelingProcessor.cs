@@ -99,8 +99,8 @@ namespace Model.Entity
 
         private DuctLevelingMode? mode;
         public DuctLevelingMode Mode =>this.mode??= this.GetMode();
-        //
 
+        //TẠO DUCT
         private Duct? mainDuct1;
         public Duct MainDuct1 => this.mainDuct1 ??= this.GetMainDuct1();
        

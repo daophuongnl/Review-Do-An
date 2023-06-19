@@ -117,10 +117,8 @@ namespace Model.Entity
         }
         public static XYZ GetMiddlePoint(this DuctLevelingProcessor q)
         {
-
             var point = q.PickPoint;
             return q.DuctLine!.GetProjectPoint(point!);
-
         }
         public static Duct GetMainDuct1(this DuctLevelingProcessor q)
         {

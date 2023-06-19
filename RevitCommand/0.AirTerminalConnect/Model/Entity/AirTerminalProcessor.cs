@@ -1,5 +1,6 @@
 ﻿using Autodesk.Revit.DB;
 using Autodesk.Revit.DB.Mechanical;
+using Model.Dataa;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -62,6 +63,11 @@ namespace Model.Entity
         private FlexDuct? flexDuct;
         public FlexDuct FlexDuct => this.flexDuct ??= this.GetFlexDuct();
 
+        public static implicit operator AirTerminalProcessor(AirTerminalProcessor_Data v)
+        {
+            throw new NotImplementedException();
+        }
+
         //{
         //    get
         //    {
@@ -77,9 +83,9 @@ namespace Model.Entity
         //    }
 
         //}
-     
-                
-      
+
+
+
 
     }
 }

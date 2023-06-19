@@ -6,7 +6,7 @@
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:c="clr-namespace:Model.Control;assembly=BIMDev.ControlLibrary" mc:Ignorable="d"
         Width="500" Height="220" Title="Air Terminal Connect" WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
-        FontSize="16" 
+        FontSize="16" Topmost="True"
         
              x:Name="root">
     <!--<Window.Resources>

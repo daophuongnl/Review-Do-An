@@ -44,12 +44,10 @@ namespace Model.Form
 
             data.Processor.Duct = revitData.Selection.PickElement<Duct>();
             data.Processor.PickPoint = revitData.Selection.PickPoint();
-
             data.Processor.Do();
 
             //process.Duct = revitData.Selection.PickElement<Duct>();
             //process.PickPoint = revitData.Selection.PickPoint();
-          
             //process.Do();
             //revitData.ExternalEvent!.Raise();
         }

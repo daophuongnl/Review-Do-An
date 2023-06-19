@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Model.Entity;
+using SingleData;
 
 namespace Model.Form
 {
@@ -24,6 +25,7 @@ namespace Model.Form
     public partial class AirTerminalProcessor_Form : System.Windows.Window
     {
         private AirTerminalProcessor_Data data => AirTerminalProcessor_Data.Instance;
+        private RevitData revitData => RevitData.Instance; 
         public AirTerminalProcessor_Form()
         {
             InitializeComponent();
@@ -31,6 +33,8 @@ namespace Model.Form
 
         private void run_Clicked(object sender, RoutedEventArgs e)
         {
+            //revitData.ExternalEvent!.Raise();
+
             data.Processor.Do();
         }
     }

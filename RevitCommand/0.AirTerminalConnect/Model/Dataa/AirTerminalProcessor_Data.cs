@@ -29,6 +29,11 @@ namespace Model.Dataa
         //processor
         private AirTerminalProcessor? processor;
         public AirTerminalProcessor Processor => this.processor ??= new AirTerminalProcessor();
+        //public AirTerminalProcessor Processor
+        //{
+        //    get => processor!;
+        //    set => processor = value;
+        //}
 
     }
 }
