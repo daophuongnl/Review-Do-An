@@ -34,15 +34,11 @@
             <Label Content="mm" VerticalAlignment="Center"/>
         </StackPanel>
 
-
-
-
-
-        <!--<Image Width="300">
+        <Image Width="300">
             <Image.Source>
-                <BitmapImage DecodePixelWidth="300" UriSource="F:\15. REVIT API\SprinklerConnect\SprinklerConnect\Library\Image\SolveClashDuct (2).png" />
+                <BitmapImage DecodePixelWidth="300" UriSource="D:\API\Review-Do-An\RevitCommand\Library\Image\DuctCheck45.png"/>
             </Image.Source>
-        </Image>-->
+        </Image>
 
         <Button Content="RUN" Margin="10 8 0 0" Padding=" 3 3 3 3 " Click="run_clicked" Width="383" />
 

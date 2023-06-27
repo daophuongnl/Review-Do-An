@@ -36,11 +36,11 @@
         </StackPanel>
 
 
-        <!--<Image Width="300">
+        <Image Width="300">
             <Image.Source>
-                <BitmapImage DecodePixelWidth="300" UriSource="F:\15. REVIT API\SprinklerConnect\SprinklerConnect\Library\Image\SolveClashDuct (2).png" />
+                <BitmapImage DecodePixelWidth="300" UriSource="D:\API\Review-Do-An\RevitCommand\Library\Image\DuctCheck90.png" />
             </Image.Source>
-        </Image>-->
+        </Image>
 
         <Button Content="Run" Click="run_Clicked1"/>
 
